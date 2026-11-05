@@ -1,1 +1,1 @@
-[[{"id": 1, "items": [{"product_id": 1, "quantity": 2}, {"product_id": 3, "quantity": 1}], "total": 1026.0, "status": "OPEN"}, {"id": 5, "items": [{"product_id": 1, "quantity": 2}], "total": 240, "status": "OPEN"}], {"id": 5, "items": [{"product_id": 1, "quantity": 2}], "total": 240, "status": "CLOSE"}]
+[{"id": 1, "items": [{"product_id": 1, "quantity": 3}], "total": 342.0, "status": "CLOSE"}]

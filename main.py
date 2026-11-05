@@ -25,6 +25,8 @@ def main():
             count = 0
             while True:
                 product_id = get_num("enter product id")
+                if check_if_excit(product_id,products):
+                    continue
                 order_quantity = get_num("enter quantity order")
                 orders = load_from_json()
                 if count ==0:
@@ -56,13 +58,15 @@ def main():
         if choice ==4:
             order_id = get_num("enter order id")
             all_orders = load_from_json()
+            print(all_orders)
             status = close_order(order_id,all_orders)
             if status =="try agien!!":
                 print(status)
                 continue
-            save_order_in_json(status)
+            update_order(status)
         if choice ==5:
-            pass
+            orders_result = load_from_json()
+            Sales_Report(orders_result)
         if choice ==0:
             break
 main()        
