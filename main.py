@@ -4,7 +4,9 @@ from result import *
 from validate import *
 from calculate import*
 from save_json import*
-
+import logging
+logging.basicConfig(level=logging.INFO,format="%(asctime)s %(levelname)-8s %(message)s",
+    encoding="utf-8")
 
 products = [
     {"id": 1, "name": "Keyboard", "price": 120},
@@ -15,11 +17,13 @@ products = [
 ]
 
 def main():
+    logging.info("start")
     while True:
+        logging.info("start loop")
         shaw_menu()
         choice = get_num("Choose option")
         if val_num_between_range(choice) == False:
-            print("out of range!!")
+            logging.error("out of range!!")
             continue
         if choice ==1:
             count = 0

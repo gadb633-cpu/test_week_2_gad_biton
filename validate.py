@@ -20,13 +20,11 @@ def check_if_excit(num_order,products):
             return False
     return True
     
-
 def val_num_between_range(num):
     if num<0 or num >5:
         return False
     return True
-def check_status(status):
-    pass
+
 def val_if_yes_or_no(enser):
     if enser in ["yes","no"]:
         return True
