@@ -2,6 +2,9 @@ from shaw_menu import*
 from inputs import *
 from result import *
 from validate import *
+from calculate import*
+from save_json import*
+
 
 products = [
     {"id": 1, "name": "Keyboard", "price": 120},
@@ -11,15 +14,6 @@ products = [
     {"id": 5, "name": "USB Cable", "price": 30}
 ]
 
-order = {
-    "id": 1,
-    "items": [{"product_id": 1, "quantity": 2},
-              {"product_id": 3, "quantity": 1}],
-    "total": 1026.0,
-    "status": "OPEN"
-}
-
-
 def main():
     while True:
         shaw_menu()
@@ -28,15 +22,45 @@ def main():
             print("out of range!!")
             continue
         if choice ==1:
+            count = 0
             while True:
-                order_id = get_num("enter order id")
+                product_id = get_num("enter product id")
                 order_quantity = get_num("enter quantity order")
+                orders = load_from_json()
+                if count ==0:
+                    new_order = get_info_new_order(product_id,order_quantity,orders)
+                    new_order_with_price = calculate_price(order_quantity,product_id,products,new_order)
+                else:
+                    add_product = get_info_product(product_id,order_quantity,new_order)
+                    new_order_with_fue_products = calculate_price(order_quantity,product_id,products,add_product)
+                enser = get_enser()
+                if enser == "yes":
+                    count +=1
+                    continue
+                if enser =="no":
+                    if count ==0:
+                        price_with_discount = calculate_discount(new_order_with_price)
+                        save_order_in_json(price_with_discount)
+                        break
+                    else:
+                        price_with_discount = calculate_discount(new_order_with_fue_products)
+                        save_order_in_json(price_with_discount)
+                        break
         if choice ==2:
-            pass
+            all_orders = load_from_json()
+            print(all_orders)
         if choice ==3:
-            pass
+            order_id = get_num("enter order id")
+            all_orders = load_from_json()
+            print(find_order_by_id(order_id,all_orders))
         if choice ==4:
-            pass
+            order_id = get_num("enter order id")
+            all_orders = load_from_json()
+            status = close_order(order_id,all_orders)
+            if status =="try agien!!":
+                print(status)
+                continue
+            save_order_in_json(status)
         if choice ==5:
             pass
         if choice ==0:
