@@ -8,5 +8,4 @@ def shaw_menu():
 4. Close order
 5. Show sales report
 0. Exit
-Choose option:
 ''')

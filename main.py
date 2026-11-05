@@ -1,4 +1,7 @@
 from shaw_menu import*
+from inputs import *
+from result import *
+from validate import *
 
 products = [
     {"id": 1, "name": "Keyboard", "price": 120},
@@ -20,3 +23,22 @@ order = {
 def main():
     while True:
         shaw_menu()
+        choice = get_num("Choose option")
+        if val_num_between_range(choice) == False:
+            print("out of range!!")
+            continue
+        if choice ==1:
+            while True:
+                order_id = get_num("enter order id")
+                order_quantity = get_num("enter quantity order")
+        if choice ==2:
+            pass
+        if choice ==3:
+            pass
+        if choice ==4:
+            pass
+        if choice ==5:
+            pass
+        if choice ==0:
+            break
+main()        
